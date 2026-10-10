@@ -644,9 +644,9 @@ const mpAdmin=()=>!!(ACC&&ACC.admin)||mpOthers().some(p=>p.presence.adm);
 function mpmsg(m){$('mpm').textContent=m}
 async function mpOpen(){$('mpo').style.display='flex';mpmsg('Connexion au service multijoueur…');
 let why='';
-if(!rmS){if(!window.claude||!window.claude.use){useP2P=true}else try{rmS=await window.claude.use('room');if(!rmS)why='Le service multijoueur refuse la connexion : tu n\u2019es pas connecté à claude.ai, ou tu as ouvert un lien public.'}catch(e){rmS=null;why='Erreur du service multijoueur ('+((e&&e.code)||'inconnue')+').'}}
+if(!rmS){if(!window.claude||!window.claude.use){useP2P=true}else try{rmS=await window.claude.use('room');if(!rmS)why='Le service multijoueur refuse la connexion :ou tu as ouvert un lien public.'}catch(e){rmS=null;why='Erreur du service multijoueur ('+((e&&e.code)||'inconnue')+').'}}
 $('mh').disabled=$('mj').disabled=!(rmS||useP2P);
-mpmsg(useP2P?'En ligne direct (WebRTC) : un joueur crée une salle, les autres entrent le même code. Fonctionne hors de claude.ai (hébergé sur GitHub, etc.).':rmS?'En ligne : un joueur crée une salle, les autres entrent le même code. Chacun doit ouvrir ce jeu connecté à claude.ai.':why+' Tu peux quand même jouer à 2 sur le même écran avec le bouton ci-dessous.')}
+mpmsg(useP2P?'En ligne direct (WebRTC) : un joueur crée une salle, les autres entrent le même code. (hébergé sur GitHub, etc.).':rmS?'En ligne : un joueur crée une salle, les autres entrent le même code.':why+' Tu peux quand même jouer à 2 sur le même écran avec le bouton ci-dessous.')}
 function mpLeave(){netHost=false;netCl=false;clearInterval(mpPoll);if(RM){try{RM.leave()}catch(e){}}RM=null;mpOn=false;mpStarted=false;mpEnd=false;emSeen={}}
 function loadPeerJS(){return new Promise((res,rej)=>{if(window.Peer)return res();const sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js';sc.onload=()=>res();sc.onerror=()=>rej(new Error('PeerJS indisponible'));document.head.appendChild(sc)})}
 async function p2pRoom(code,host){await loadPeerJS();
