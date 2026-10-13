@@ -83,7 +83,7 @@ END.localwin={n:'Deux sur un canapé',big:'LE MONDE EST SAUVÉ',t:'VICTOIRE',c:'
 END.locallose={n:'Le duo brisé',big:'LE DUO EST BRISÉ',t:'DÉFAITE',c:'#ff9ac0',d:'L\u2019un des deux joueurs est tombé : fin de partie.'};
 const EO=['carl','boss','jacob','marie','sam','echec','solo','hero','duo','team','legend','perfect','massacre','coop','racewin','racelose','wipe','coopadm','coopadmlose','raceout','localwin','locallose','st_cure','st_sacrifice','st_ashes','st_pact','camp_win','camp_perfect','camp_lose'];
 let got={},isNew=false,curEnd='carl',prevState='menu',ACC=null,st={games:0,wins:0,kills:0};
-const REMOTE_DB='';/* ← colle ici l'URL de ta base Firebase Realtime Database, ex : 'https://mon-projet-default-rtdb.europe-west1.firebasedatabase.app' */
+const REMOTE_DB='https://zomboide-e3584-default-rtdb.europe-west1.firebasedatabase.app/';/* ← colle ici l'URL de ta base Firebase Realtime Database, ex : 'https://mon-projet-default-rtdb.europe-west1.firebasedatabase.app' */
 const ACC_VER='3';
 (function(){try{if(localStorage.getItem('zbd_ver')===ACC_VER)return;const old=JSON.parse(localStorage.getItem('zbd_acc')||'{}')||{},keep={};if(old.nyrox768)keep.nyrox768=old.nyrox768;const sv={};['zbd_story_nyrox768','zbd_camp_nyrox768'].forEach(k=>{const v=localStorage.getItem(k);if(v)sv[k]=v});
 const rm=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&(k.startsWith('zbd_')||k.startsWith('carl_')))rm.push(k)}rm.forEach(k=>localStorage.removeItem(k));
